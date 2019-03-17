@@ -1,0 +1,31 @@
+{
+  "connection": "default",
+  "collectionName": "sites",
+  "info": {
+    "name": "info",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "string"
+    },
+    "facebook": {
+      "default": "",
+      "type": "string"
+    },
+    "instagram": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    }
+  }
+}
