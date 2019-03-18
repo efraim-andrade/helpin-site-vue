@@ -142,7 +142,7 @@ $default: 'Raleway', sans-serif;
         clip-path: polygon(0 0, 0% 100%, 100% 100%);
         
         @media screen and (max-width: 1024px) {
-            top: -32px;
+            top: -31px;
             
             height: 30px;
         }

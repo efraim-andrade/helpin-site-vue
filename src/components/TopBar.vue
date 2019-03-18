@@ -2,7 +2,7 @@
     <Toolbar class="top-bar" :pose="isVisible ? 'visible' : 'hidden'">
         <div class="header">
             <a class="left">
-                <img class="logo" src="../assets/logo-simples.png" alt="helpin" title="helpin" >
+                <img class="logo" src="../assets/logo-simples-white.png" alt="helpin" title="helpin" >
             </a>
 
             <div class="right">
@@ -19,11 +19,15 @@
         <Content class="content" :pose="isOpen ? 'opened' : 'closed'">
             <ul class="menu">
                 <li class="item">
-                    <a href="#about" class="anchor">
-                        Sobre
+                    <a href="#team" class="anchor" @click="goTo">
+                        Equipe
                     </a>
                 </li>
-                <li class="item">Contato</li>
+                <li class="item">
+                    <a href="#contact" class="anchor" @click="goTo">
+                        Contato
+                    </a>
+                </li>
             </ul>
 
             <div class="socials">
@@ -84,6 +88,13 @@ export default {
 
             body.style.overflow = this.isOpen ? 'hidden' : 'auto'
         },
+
+        goTo() {
+            document.querySelector('body').style.overflow = 'auto'
+
+            this.isOpen = false
+        },
+
         showElement() {
             (window.scrollY >= 78 && window.innerWidth <= 1024)
                 ? this.isVisible = true
@@ -113,7 +124,7 @@ $secondary: #a574f1;
 
             display: block;
             width: calc(100vw - 20px);
-            height: 6.5vh;
+            height: 40px;
             padding: 6px 10px;
 
             background: $darker;
@@ -197,15 +208,18 @@ $secondary: #a574f1;
                     width: 90%;
 
                     .item {
-                        border-bottom: 1px solid rgba(#FFF, .1)
-;
+                        border-bottom: 1px solid rgba(#FFF, .1);   
+
                         list-style: none;
-                        line-height: 2.5;
-                        font-size: 2.4rem;
                         text-align: center;
 
-                        &:first-child {
-                            border-top: 1px solid rgba(#FFF, .1)
+                        &:first-child { border-top: 1px solid rgba(#FFF, .1) }
+
+                        > .anchor {
+                            color: #FFF;
+                            line-height: 2.5;
+                            font-size: 2.4rem;
+                            text-decoration: none;
                         }
                     }
                 }
