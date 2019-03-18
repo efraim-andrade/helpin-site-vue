@@ -3,10 +3,12 @@
         <h1 class="title">Equipe</h1>
 
         <div class="content">
-            <article 
+            <Member 
                 class="member" 
                 v-for="member in members" 
                 :key="member.id"
+                :item="member.id"
+                :pose="isVisible ? 'visible' : 'hidden'"
             >
                 <img class="photo" :src="'http://localhost:1337' + member.avatar.url" alt="" />
 
@@ -17,19 +19,38 @@
 
                     <p class="description">{{ member.history }}</p>
                 </div>
-            </article>
+            </Member>
         </div>
     </section>
 </template>
 
 <script>
 import axios from 'axios'
+import posed from 'vue-pose'
 
 export default {
     data() {
         return {
-            members: []
+            members: [],
+            isVisible: false,
         }   
+    },
+    components: {
+        Member: posed.article({
+            visible: {
+                opacity: 1,
+                delay: ({ item }) => item * 300
+            },
+            hidden: { opacity: 0 } 
+        })
+    },
+    methods: {
+        fadeItems() {
+            window.scrollY >= 250 ? this.isVisible = true : this.isVisible = false;
+        }
+    },
+    mounted() {
+        document.addEventListener('scroll', this.fadeItems)
     },
     async created() {
         const { data } = await axios.get('http://localhost:1337/members') 
@@ -42,10 +63,11 @@ export default {
 <style lang="scss">
     $darker: #333;
     $white_50: rgba(#FFF, .5);
-    $nunito: "Nunito Sans", sans-serif;
+    $default: "Raleway", sans-serif;
 
-    .team {       
+.team {       
     position: relative;
+    z-index: 1;
 
     min-height: 100vh;
     margin: 0 100px;
@@ -55,7 +77,7 @@ export default {
 
     @media screen and (max-width: 1024px){
         padding: 0 20px;
-        margin: 50px 60px 0 20px; 
+        margin: 0 0 20px 0; 
     };
 
     &:before,
@@ -75,7 +97,7 @@ export default {
     }
 
     &:before {
-        top: -102px;
+        top: -101px;
 
         clip-path: polygon(0 100%, 100% 0, 100% 100%);
 
@@ -83,7 +105,7 @@ export default {
     }
 
     &:after {
-        bottom: -102px;
+        bottom: -101px;
 
         clip-path: polygon(0 0, 100% 0, 100% 100%);
 
@@ -99,10 +121,9 @@ export default {
         text-align: center;
         color: $white_50;
         font-size: 2.5rem;
-        font-family: $nunito;
 
         @media screen and (max-width: 1024px){
-            padding-top: 8px;
+            padding-top: 40px;
 
             font-size: 1.5rem;
         };
@@ -118,6 +139,8 @@ export default {
             
             content: '';
             background-color: #515151;
+
+            @media screen and (max-width: 1024px){ top: 50px };
         }
 
         &:after {
@@ -134,25 +157,32 @@ export default {
             background: $darker;
             content: "";
 
-            @media screen and (max-width: 1024px){ width: 110px; };
+            @media screen and (max-width: 1024px){
+                top: 20px;
+                
+                width: 110px; 
+            };
         }
     }
 
     > .content {
         padding: 40px 90px;
-        
+
+        @media screen and (max-width: 1500px) { padding: 40px 50px; }
+
         @media screen and (max-width: 1024px){
-            padding: 0 10px;
+            padding: 0 10px 20px;
 
             text-align: center;
         };
 
         .member {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 40px;
 
             @media screen and (max-width: 1024px){
+                align-items: center;
                 flex-direction: column;
             };
 
@@ -180,8 +210,8 @@ export default {
             }
 
             .photo {
-                min-width: 340px;
-                height: 340px;
+                min-width: 240px;
+                height: 240px;
                 border-radius: 100%;
 
                 margin-right: 16px;
@@ -202,11 +232,12 @@ export default {
 
             .content {
                 color: $white_50;
-                font-family: 'Nunito', 'sans-serif';
 
                 .name {
                     margin-bottom: 5px;
+                    
                     font-size: 28px;
+                    font-family: $default;
 
                     @media screen and (max-width: 1024px){ font-size: 18px; };
                 }
@@ -216,13 +247,17 @@ export default {
 
                     opacity: .8;
                     font-size: 14px;
+                    font-family: $default;
 
                     @media screen and (max-width: 1024px){ font-size: 10px; };
                 }
 
                 .description {
-                    font-size: 16px;
+                    font-size: 1rem;
+                    font-family: $default;
                     line-height: 24px;
+
+                    @media screen and (max-width: 1500px) { font-size: .9rem; }
 
                     @media screen and (max-width: 1024px){
                         font-size: 12px;

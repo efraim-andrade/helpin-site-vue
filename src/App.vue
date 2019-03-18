@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <SideBar />
+
+    <TopBar />
+
     <Banner />
 
     <Team />
@@ -9,6 +13,8 @@
 </template>
 
 <script>
+  import SideBar from './components/SideBar.vue'
+  import TopBar from './components/TopBar.vue'
   import Banner from './components/Banner.vue'
   import Team from './components/Team.vue'
   import Contact from './components/Contact.vue'
@@ -16,6 +22,8 @@
   export default {
     name: 'app',
     components: {
+      SideBar,
+      TopBar,
       Banner,
       Team,
       Contact
@@ -25,7 +33,7 @@
 
 <style lang="scss">
   //Fonts
-  $nunito: "Nunito Sans", sans-serif;
+  $default: "Josefin Sans", sans-serif;
 
   //Colors
   $dark: #454545;
@@ -43,16 +51,15 @@
   #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: "nunito", sans-serif;
 
     position: relative;
     
     overflow: hidden;
     color: $white;
-    font-family: $nunito;
-    background-color: $dark;
+    font-family: $default;
+    background: linear-gradient($primary, $lighBlue);
 
-    &:before,
+    /*&:before,
     &:after {
         position: absolute;
         z-index: 0;
@@ -75,10 +82,12 @@
     }
     
     &:after {
-        top: 31%;
+        top: 10.3%;
         left: 0;
         
-        @media screen and (max-width: 1370px) { top: 120px; }
-    }
+        @media screen and (max-width: 1370px) { top: 11%; }
+
+        @media screen and (max-width: 1024px) { top: 120px; }
+    }*/
   }
 </style>

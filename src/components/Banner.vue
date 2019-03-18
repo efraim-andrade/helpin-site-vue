@@ -1,5 +1,5 @@
 <template>
-    <section class="banner">
+    <Section class="banner" :pose="isVisible ? 'visible' : 'hidden'">
         <header>
             <img class="logo" src="../assets/logo.png" alt="Helpin" title="Helpin" />
         </header>
@@ -20,22 +20,37 @@
                 </div>
             </div>
         </div>
-    </section>
+    </Section>
 </template>
 
 <script>
 import axios from 'axios'
+import posed from 'vue-pose'
 
 export default {
-    data() {
-        return {
-            info: ''
-        }
+    data: () => ({
+        info: '',
+        isVisible: false
+    }),
+    components: {
+        Section: posed.section({
+            visible: {
+                opacity: 1,
+                transition: {
+                    duration: 1000,
+                    ease: 'easeIn'    
+                }
+            },
+            hidden: { opacity: 0 }
+        })
     },
     async created() {
         const { data } = await axios.get('http://localhost:1337/infos')
 
         this.info = data[0];
+    },
+    mounted() {
+        this.isVisible = !this.isVisible
     }
 }
 </script>
@@ -46,8 +61,15 @@ export default {
     flex-direction: column;
     align-items: center;
 
-    min-height: 100vh;
     padding: 0 100px;
+    min-height: 100vh;
+    margin-bottom: 110px;
+    background: {
+        image: url('../assets/Vector.svg');
+        size: contain;
+        repeat: no-repeat;
+        position:  0 -1px;
+    }
 
     @media screen and (max-width: 1024px) { padding: 0 20px; }
 
@@ -74,25 +96,31 @@ export default {
         }
 
         > .left {
-            width: 60%;
+            width: 67%;
 
             @media screen and (max-width: 1024px) {
                 margin-bottom: 20px;
 
-                width: 92%;
+                width: 100%;
             }
 
             > .title {
                 margin-bottom: 20px;
 
-                font-size: 48px;
+                font-size: 3rem;
                 line-height: 1.5;
                 color: #FFF;
+
+                @media screen and (max-width: 1500px) {
+                    max-width: 90%;
+
+                    font-size: 2.4rem;
+                }
 
                 @media screen and (max-width: 1024px) { 
                     max-width: 90%;
 
-                    font-size: 36px;
+                    font-size: 2.1rem;
                     line-height: 1.2
                 }
             }
@@ -100,9 +128,15 @@ export default {
             > .text {
                 max-width: 80%;
 
-                font-size: 18px;
+                font-size: 1.4rem;
                 line-height: 1.5;
                 color: rgba(#FFF, .75);
+
+                @media screen and (max-width: 1500px) {
+                    max-width: 90%;
+
+                    font-size: 1.2rem;
+                }
 
                 @media screen and (max-width: 1024px) { 
                     max-width: 100%;
@@ -116,11 +150,11 @@ export default {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 40%;
+            width: 33%;
             
             @media screen and (max-width: 1024px) { 
                 align-self: flex-start;
-                width: 89%;
+                width: 100%;
             }
             
             > .mockup {
