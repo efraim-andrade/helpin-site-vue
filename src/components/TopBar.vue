@@ -2,7 +2,7 @@
     <Toolbar class="top-bar" :pose="isVisible ? 'visible' : 'hidden'">
         <div class="header">
             <a class="left">
-                <img class="logo" src="../assets/logo.png" alt="helpin" title="helpin" >
+                <img class="logo" src="../assets/logo-simples.png" alt="helpin" title="helpin" >
             </a>
 
             <div class="right">
@@ -99,6 +99,8 @@ export default {
 <style lang="scss">
 $darker: #333;
 $white_50: rgba(#FFF, .5);
+$primary: #648dff;
+$secondary: #a574f1;
 
     .top-bar {
         display: none;
@@ -114,7 +116,7 @@ $white_50: rgba(#FFF, .5);
             height: 6.5vh;
             padding: 6px 10px;
 
-            background: #000;
+            background: $darker;
 
             .header {
                 z-index: 2;

@@ -71,7 +71,11 @@ export default {
         position:  0 -1px;
     }
 
-    @media screen and (max-width: 1024px) { padding: 0 20px; }
+    @media screen and (max-width: 1024px) {
+        padding: 0 20px;
+
+        background-size: cover;
+    }
 
     > header {
         margin-top: 40px;

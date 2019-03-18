@@ -94,7 +94,7 @@ export default {
     },
     methods: {
         showElements() {
-            window.scrollY >= 1738 ? this.isVisible = true : this.isVisible = false
+            window.scrollY >= 1500? this.isVisible = true : this.isVisible = false
         }
     },
     mounted() {
@@ -112,8 +112,9 @@ $default: 'Raleway', sans-serif;
 
 .contact {
     position: relative;
+    z-index: 1;
     
-    padding: 0 200px;
+    padding: 0 200px 50px;
     margin-top: 200px;
     
     background-color: $darker;
@@ -172,7 +173,10 @@ $default: 'Raleway', sans-serif;
             
             @media screen and (max-width: 1500px) { padding-right: 50px; }
 
-            @media screen and (max-width: 720px) { padding: 0 }
+            @media screen and (max-width: 720px) {
+                width: 100%;
+                padding: 0;
+            }
 
             > .group {
                 display: flex;

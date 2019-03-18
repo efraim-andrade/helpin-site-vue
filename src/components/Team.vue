@@ -61,8 +61,11 @@ export default {
 </script>
 
 <style lang="scss">
+    $primary: #648dff;
     $darker: #333;
+    $lighBlue: #94ece3;
     $white_50: rgba(#FFF, .5);
+
     $default: "Raleway", sans-serif;
 
 .team {       
@@ -70,46 +73,25 @@ export default {
     z-index: 1;
 
     min-height: 100vh;
-    margin: 0 100px;
+    margin: 0;
     padding: 0;
-
-    background-color: $darker;
 
     @media screen and (max-width: 1024px){
         padding: 0 20px;
         margin: 0 0 20px 0; 
     };
 
-    &:before,
-    &:after {
-        position: absolute;
-        left: -2px;
-        
-        display: block;
-        width: 100%;
-        height: 100px;
-        border: 1px solid transparent;
-
-        background: $darker;
-        content: "";
-
-        @media screen and (max-width: 1024px) { height: 30px; }
-    }
-
     &:before {
-        top: -101px;
+        position: absolute;
+        left: -240px;
+        top: -110px;
+        z-index: -1;
+        
+        content: url('../assets/members-background.svg');
 
-        clip-path: polygon(0 100%, 100% 0, 100% 100%);
-
-        @media screen and (max-width: 1024px) { top: -32px; }
-    }
-
-    &:after {
-        bottom: -101px;
-
-        clip-path: polygon(0 0, 100% 0, 100% 100%);
-
-        @media screen and (max-width: 1024px) { bottom: -32px; }
+        @media screen and (max-width: 1500px) {
+            left: -510px;
+        }
     }
       
     > .title {
@@ -117,58 +99,24 @@ export default {
         z-index: 2;
         
         margin-bottom: 40px;
+        margin-right: 300px;
 
         text-align: center;
-        color: $white_50;
+        color: #FFF;
         font-size: 2.5rem;
 
         @media screen and (max-width: 1024px){
             padding-top: 40px;
+            margin-right: 0;
 
-            font-size: 1.5rem;
+            font-size: 2rem;
         };
-        
-        &:before {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            z-index: -2;
-
-            width: 100%;
-            height: 1px;
-            
-            content: '';
-            background-color: #515151;
-
-            @media screen and (max-width: 1024px){ top: 50px };
-        }
-
-        &:after {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: -1;
-
-            display: block;
-            width: 180px;
-            height: 50px;
-
-            background: $darker;
-            content: "";
-
-            @media screen and (max-width: 1024px){
-                top: 20px;
-                
-                width: 110px; 
-            };
-        }
     }
 
     > .content {
-        padding: 40px 90px;
+        padding: 40px 300px 0 100px;
 
-        @media screen and (max-width: 1500px) { padding: 40px 50px; }
+        @media screen and (max-width: 1500px) { padding: 40px 90px; }
 
         @media screen and (max-width: 1024px){
             padding: 0 10px 20px;
@@ -178,7 +126,7 @@ export default {
 
         .member {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 40px;
 
             @media screen and (max-width: 1024px){
@@ -204,26 +152,31 @@ export default {
 
                 .content {
                     text-align: right;
+                    margin-right: -130px;
+                    padding-right: 130px;
+
+                    background: linear-gradient(to left, rgba($primary, .3), rgba($lighBlue, 0));
 
                     @media screen and (max-width: 1024px){ text-align: center; };
                 }
             }
 
             .photo {
-                min-width: 240px;
-                height: 240px;
+                z-index: 1;
+
+                min-width: 260px;
+                height: 260px;
                 border-radius: 100%;
 
                 margin-right: 16px;
-                border-radius: 55px;
+                border-radius: 100%;
                 object-fit: cover;
-                box-shadow: 0 0 10px #111;
+                box-shadow: 0 0 10px rgba($lighBlue, .75);
 
                 @media screen and (max-width: 1024px){
                     min-width: 160px;
                     width: 160px;
                     height: 160px;
-                    border-radius: 100%;
 
                     margin: 0;
                     margin-bottom: 16px;
@@ -231,9 +184,14 @@ export default {
             }
 
             .content {
-                color: $white_50;
+                margin-left: -130px;
+                padding-left: 130px;
+
+                color: #FFF;
+                background: linear-gradient(to right, rgba($primary, .3), rgba($lighBlue, 0));
 
                 .name {
+                    margin-top: 10px;
                     margin-bottom: 5px;
                     
                     font-size: 28px;
@@ -253,6 +211,8 @@ export default {
                 }
 
                 .description {
+                    max-width: 700px;
+
                     font-size: 1rem;
                     font-family: $default;
                     line-height: 24px;

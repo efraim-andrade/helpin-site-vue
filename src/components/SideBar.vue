@@ -36,6 +36,7 @@ $white_50: rgba(#FFF, .5);
     position: fixed;
     bottom: 100px;
     left: 10px;
+    z-index: 10;
 
     @media screen and (max-width: 1024px) { display: none; }
 
@@ -50,12 +51,14 @@ $white_50: rgba(#FFF, .5);
             > a {
                 position: relative;
 
-                font-size: 18px;
-                letter-spacing: 0.25rem;
-                color: rgba(#FFF, .5);
-                text-decoration: none;
+                text-shadow: 0 0 10px rgba(#000, .5);
+
                 cursor: pointer;
+                font-size: 18px;
                 transition: .3s;
+                text-decoration: none;
+                color: rgba(#FFF, .85);
+                letter-spacing: 0.25rem;
 
                 &:before {
                     position: absolute;
@@ -66,7 +69,7 @@ $white_50: rgba(#FFF, .5);
                     width: 0;
                     height: 1px;
 
-                    background: $white_50;
+                    background: #FFF;
                     transition: .3s;
                     content: "";
                 }
@@ -104,7 +107,7 @@ $white_50: rgba(#FFF, .5);
 
             &.-instagram { background: linear-gradient($secondary, $danger); }
 
-            &.-facebook { background: linear-gradient($primary, $lighBlue); }
+            &.-facebook { background: #3B5999; }
 
             > img { height: 30px; }
         }
