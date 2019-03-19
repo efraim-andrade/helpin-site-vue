@@ -123,7 +123,7 @@ $default: 'Raleway', sans-serif;
 
     @media screen and (max-width: 1024px) {
         margin-top: 90px;
-        padding: 0 20px 40px;
+        padding: 0 20px 45px;
     }
     
     &:before {
@@ -164,7 +164,7 @@ $default: 'Raleway', sans-serif;
         align-items: center;
         justify-content: space-between;
 
-        @media screen and (max-width: 720px) { flex-direction: column; }
+        @media screen and (max-width: 1024px) { flex-direction: column; }
 
         > form {
             position: relative;
@@ -173,7 +173,7 @@ $default: 'Raleway', sans-serif;
             
             @media screen and (max-width: 1500px) { padding-right: 50px; }
 
-            @media screen and (max-width: 720px) {
+            @media screen and (max-width: 1024px) {
                 width: 100%;
                 padding: 0;
             }
@@ -183,7 +183,7 @@ $default: 'Raleway', sans-serif;
                 flex-direction: column;
                 margin-bottom: 20px;
 
-                @media screen and (min-width: 720px) { width: 100%; }
+                @media screen and (min-width: 1024px) { width: 100%; }
                 
                 > label {
                     margin-bottom: 5px;
@@ -221,7 +221,7 @@ $default: 'Raleway', sans-serif;
                         padding: 12px 12px;
                     }
 
-                    @media screen and (max-width: 720px) {
+                    @media screen and (max-width: 1024px) {
                         &.-name,
                         &.-mail,
                         &.-text  { width: 92%; }
@@ -239,7 +239,7 @@ $default: 'Raleway', sans-serif;
 
             background: $white_50;
 
-            @media screen and (max-width: 720px) { display: none; }
+            @media screen and (max-width: 1024px) { display: none; }
         }
 
         > .socials {

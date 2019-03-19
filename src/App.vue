@@ -58,36 +58,5 @@
     color: $white;
     font-family: $default;
     background: linear-gradient($primary, $lighBlue);
-
-    /*&:before,
-    &:after {
-        position: absolute;
-        z-index: 0;
-
-        width: 100%;
-        height: 1px;
-        
-        background-color: #515151;
-        content: '';
-    }
-  
-    &:before {
-        top: 0;
-        left: 65%;
-        
-        width: 1px;
-        height: 100%;
-        
-        @media screen and (max-width: 1370px) { left: 83%; }
-    }
-    
-    &:after {
-        top: 10.3%;
-        left: 0;
-        
-        @media screen and (max-width: 1370px) { top: 11%; }
-
-        @media screen and (max-width: 1024px) { top: 120px; }
-    }*/
   }
 </style>

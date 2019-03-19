@@ -65,7 +65,7 @@ export default {
     min-height: 100vh;
     margin-bottom: 110px;
     background: {
-        image: url('../assets/Vector.svg');
+        image: url('../assets/background.svg');
         size: contain;
         repeat: no-repeat;
         position:  0 -1px;

@@ -119,7 +119,7 @@ export default {
         @media screen and (max-width: 1500px) { padding: 40px 90px; }
 
         @media screen and (max-width: 1024px){
-            padding: 0 10px 20px;
+            padding: 0 10px 20px;padding: 0 10px 20px;
 
             text-align: center;
         };
@@ -190,6 +190,8 @@ export default {
                 color: #FFF;
                 background: linear-gradient(to right, rgba($primary, .3), rgba($lighBlue, 0));
 
+                @media screen and (max-width: 1024px) { padding: 0 0 20px 130px; }
+
                 .name {
                     margin-top: 10px;
                     margin-bottom: 5px;
@@ -220,9 +222,16 @@ export default {
                     @media screen and (max-width: 1500px) { font-size: .9rem; }
 
                     @media screen and (max-width: 1024px){
+                        max-width: 76%;
+                        margin: 0 auto;
+
                         font-size: 12px;
                         line-height: 18px;
                     };
+
+                    @media screen and (max-width: 720px) {
+                        max-width: 100%; 
+                    }
                 }
             }
         }
