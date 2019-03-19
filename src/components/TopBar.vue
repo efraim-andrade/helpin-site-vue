@@ -40,7 +40,6 @@
                 </a>
             </div>
         </Content>
-
     </Toolbar>
 </template>
 
@@ -74,9 +73,11 @@ export default {
         Content: posed.div({
             opened: {
                 opacity: 1,
+                top: 50,
             },
             closed: {
                 opacity: 0,
+                top: 500,
             }
         })
     },
@@ -189,6 +190,7 @@ $secondary: #a574f1;
             .content {
                 position: absolute;
                 left: 0;
+                top: 500px;
                 z-index: 1;
 
                 display: flex;
