@@ -1,6 +1,7 @@
 <template>
     <nav class="side-bar">
         <ul class="menu">
+            <li class="item"><a href="#about">Sobre</a></li>
             <li class="item"><a href="#team">Equipe</a></li>
             <li class="item"><a href="#contact">Contato</a></li>
         </ul>

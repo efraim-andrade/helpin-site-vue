@@ -37,7 +37,7 @@ export default {
         Topic: posed.article({
             visible: {
                 opacity: 1,
-                delay: ({ item }) => item * 300
+                delay: ({ item }) => item * 150
             },
             hidden: { opacity: 0 } 
         })
@@ -64,6 +64,10 @@ export default {
     $lighBlue: #94ece3;
     $white_50: rgba(#FFF, .5);
 
+    $secondary: #a574f1;
+
+    $danger: #f27878;
+
     $default: "Raleway", sans-serif;
 
 .about {       
@@ -71,7 +75,7 @@ export default {
     z-index: 1;
 
     min-height: 100vh;
-    margin: 0;
+    margin: 0 0 100px;
     padding: 0;
 
     @media screen and (max-width: 1024px){
@@ -155,7 +159,7 @@ export default {
                     margin-right: -130px;
                     padding-right: 130px;
 
-                    background: linear-gradient(to left, rgba($primary, .3), rgba($lighBlue, 0));
+                    background: linear-gradient(to left, rgba($danger, .3), rgba($secondary, 0));
 
                     @media screen and (max-width: 1024px){ text-align: center; };
                 }
@@ -171,7 +175,7 @@ export default {
                 margin-right: 16px;
                 border-radius: 16px;
                 object-fit: cover;
-                box-shadow: 0 0 10px rgba($lighBlue, .75);
+                box-shadow: 0 12px 20px rgba(#D8818A, .95);
 
                 @media screen and (max-width: 1024px){
                     min-width: 160px;
@@ -188,7 +192,7 @@ export default {
                 padding-left: 130px;
 
                 color: #FFF;
-                background: linear-gradient(to right, rgba($primary, .3), rgba($lighBlue, 0));
+                background: linear-gradient(to right, rgba($danger, .3), rgba($secondary, 0));
 
                 @media screen and (max-width: 1024px) { padding: 0 0 20px 130px; }
 

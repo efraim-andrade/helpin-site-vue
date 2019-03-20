@@ -94,7 +94,7 @@ export default {
     },
     methods: {
         showElements() {
-            window.scrollY >= 1500? this.isVisible = true : this.isVisible = false
+            window.scrollY >= 2800 ? this.isVisible = true : this.isVisible = false
         }
     },
     mounted() {

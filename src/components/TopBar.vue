@@ -19,10 +19,17 @@
         <Content class="content" :pose="isOpen ? 'opened' : 'closed'">
             <ul class="menu">
                 <li class="item">
+                    <a href="#about" class="anchor" @click="goTo">
+                        Sobre
+                    </a>
+                </li>
+
+                <li class="item">
                     <a href="#team" class="anchor" @click="goTo">
                         Equipe
                     </a>
                 </li>
+
                 <li class="item">
                     <a href="#contact" class="anchor" @click="goTo">
                         Contato

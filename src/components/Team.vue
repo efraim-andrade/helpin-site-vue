@@ -39,14 +39,14 @@ export default {
         Member: posed.article({
             visible: {
                 opacity: 1,
-                delay: ({ item }) => item * 300
+                delay: ({ item }) => item * 150
             },
             hidden: { opacity: 0 } 
         })
     },
     methods: {
         fadeItems() {
-            window.scrollY >= 250 ? this.isVisible = true : this.isVisible = false;
+            window.scrollY >= 1749 ? this.isVisible = true : this.isVisible = false;
         }
     },
     mounted() {
@@ -83,14 +83,14 @@ export default {
 
     &:before {
         position: absolute;
-        left: -240px;
+        right: -240px;
         top: -110px;
         z-index: -1;
         
         content: url('../assets/members-background.svg');
 
         @media screen and (max-width: 1500px) {
-            left: -510px;
+            right: -510px;
         }
     }
       
@@ -99,7 +99,7 @@ export default {
         z-index: 2;
         
         margin-bottom: 40px;
-        margin-right: 300px;
+        margin-left: 200px;
 
         text-align: center;
         color: #FFF;
@@ -107,14 +107,14 @@ export default {
 
         @media screen and (max-width: 1024px){
             padding-top: 40px;
-            margin-right: 0;
+            margin: 0 auto  40px;
 
             font-size: 2rem;
         };
     }
 
     > .content {
-        padding: 40px 300px 0 100px;
+        padding: 40px 100px 0 400px;
 
         @media screen and (max-width: 1500px) { padding: 40px 90px; }
 
@@ -171,7 +171,7 @@ export default {
                 margin-right: 16px;
                 border-radius: 100%;
                 object-fit: cover;
-                box-shadow: 0 0 10px rgba($lighBlue, .75);
+                box-shadow: 0 12px 20px rgba(#79B5EC, .95);
 
                 @media screen and (max-width: 1024px){
                     min-width: 160px;
