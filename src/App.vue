@@ -6,6 +6,8 @@
 
     <Banner />
 
+    <About />
+
     <Team />
 
     <Contact />
@@ -16,6 +18,7 @@
   import SideBar from './components/SideBar.vue'
   import TopBar from './components/TopBar.vue'
   import Banner from './components/Banner.vue'
+  import About from './components/About.vue'
   import Team from './components/Team.vue'
   import Contact from './components/Contact.vue'
 
@@ -25,6 +28,7 @@
       SideBar,
       TopBar,
       Banner,
+      About,
       Team,
       Contact
     }
