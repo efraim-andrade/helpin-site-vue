@@ -27,6 +27,8 @@
 import axios from 'axios'
 import posed from 'vue-pose'
 
+import db from '../services/firebase.js'
+
 export default {
     data: () => ({
         info: '',
@@ -45,9 +47,9 @@ export default {
         })
     },
     async created() {
-        const { data } = await axios.get('http://localhost:1337/infos')
+        const data = await db.collection('infos').doc('SRCU7wISQFDN2uupDAFM').get()
 
-        this.info = data[0];
+        this.info = data.data();
     },
     mounted() {
         this.isVisible = !this.isVisible

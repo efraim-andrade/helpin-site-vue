@@ -10,14 +10,14 @@
                 :item="member.id"
                 :pose="isVisible ? 'visible' : 'hidden'"
             >
-                <img class="photo" :src="'http://localhost:1337' + member.avatar.url" alt="" />
+                <img class="photo" :src="member.avatar" alt="" />
 
                 <div class="content">
                     <h1 class="name">{{ member.name }}</h1>
 
                     <p class="role">{{ member.role }}</p>
 
-                    <p class="description">{{ member.history }}</p>
+                    <p class="description">{{ member.description }}</p>
                 </div>
             </Member>
         </div>
@@ -27,6 +27,8 @@
 <script>
 import axios from 'axios'
 import posed from 'vue-pose'
+
+import db from '../services/firebase.js'
 
 export default {
     data() {
@@ -53,9 +55,16 @@ export default {
         document.addEventListener('scroll', this.fadeItems)
     },
     async created() {
-        const { data } = await axios.get('http://localhost:1337/members') 
-
-        this.members = data
+        await db.collection('members').onSnapshot(ref => {
+          const members = ref.docs.map(item => {
+            const id = item.id
+            const data = item.data()
+        
+            return { id, ...data }
+          })
+        
+          this.members = members;
+        })
     }
 }
 </script>
@@ -164,7 +173,7 @@ export default {
             .photo {
                 z-index: 1;
 
-                min-width: 260px;
+                width: 260px;
                 height: 260px;
                 border-radius: 100%;
 

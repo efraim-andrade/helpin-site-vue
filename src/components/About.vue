@@ -26,13 +26,35 @@
 import axios from 'axios'
 import posed from 'vue-pose'
 
+import db from '@/services/firebase'
+
 export default {
     data() {
         return {
             topics: [],
             isVisible: false,
-        }   
+        }
     },
+
+    async created() {
+        await db.collection('abouts').onSnapshot(ref => {
+          const abouts = ref.docs.map(item => {
+            const id = item.id
+            const data = item.data()
+        
+            return { id, ...data }
+          })
+        
+          this.topics = abouts
+        })
+
+        this.topics = data
+    },
+
+    mounted() {
+        document.addEventListener('scroll', this.fadeItems)
+    },
+
     components: {
         Topic: posed.article({
             visible: {
@@ -42,18 +64,11 @@ export default {
             hidden: { opacity: 0 } 
         })
     },
+
     methods: {
         fadeItems() {
             window.scrollY >= 250 ? this.isVisible = true : this.isVisible = false;
         }
-    },
-    mounted() {
-        document.addEventListener('scroll', this.fadeItems)
-    },
-    async created() {
-        const { data } = await axios.get('http://localhost:1337/abouts') 
-
-        this.topics = data
     }
 }
 </script>
