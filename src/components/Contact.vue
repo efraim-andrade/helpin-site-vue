@@ -3,7 +3,7 @@
         <h2 class="title">Contato</h2>
 
         <div class="content">
-            <Contact :pose="isVisible ? 'visible' : 'hidden'">
+            <Contact :pose="isVisible ? 'visible' : 'hidden'" class="wrap">
                 <form  v-on:submit.prevent="sendMessage">
                     <div class="group">
                         <label for="">Nome:</label>
@@ -65,7 +65,7 @@ export default {
         message: ''
     }),
     components: {
-        Contact: posed.form({
+        Contact: posed.div({
             visible: {
                 ...posedProps.visible,
                 left: 0,
@@ -161,66 +161,107 @@ $default: 'Raleway', sans-serif;
 
         @media screen and (max-width: 1024px) { flex-direction: column; }
 
-        form {
-            position: relative;
-
+        > .wrap {
+            display: flex;
             flex: 1;
-            
-            @media screen and (max-width: 1500px) { padding-right: 50px; }
 
             @media screen and (max-width: 1024px) {
+                flex: 1;
                 width: 100%;
                 padding: 0;
             }
 
-            > .group {
+            form {
+                position: relative;
+
                 display: flex;
                 flex-direction: column;
-                margin-bottom: 20px;
-
-                @media screen and (min-width: 1024px) { width: 100%; }
                 
-                > label {
-                    margin-bottom: 5px;
-                    
-                    color: $white_50;
-                    letter-spacing: 0;
-                    font: {
-                        family: $default;
-                        size: 16;
-                        weight: 300;
-                    };
+                @media screen and (max-width: 1500px) { padding-right: 50px; }
+
+                @media screen and (max-width: 1024px) {
+                    flex: 1;
+                    width: 100%;
+                    padding: 0;
                 }
-                
-                > .input {
-                    height: 40px;
-                    padding: 0 12px;
-                    border-radius: 6px;
-                    border: 1px solid transparent;
-                    
-                    outline: none;
-                    color: $white_50;
-                    background-color: $dark;
-                    font: {
-                        size: 18px;
-                        family: $default;
-                    };
-                    
-                    &.-name { width: 300px; }
-                    
-                    &.-mail { width: 380px; }
-                    
-                    &.-text {
-                        width: 500px;
-                        height: 200px;
-                        padding: 12px 12px;
-                    }
 
-                    @media screen and (max-width: 1024px) {
-                        &.-name,
-                        &.-mail,
-                        &.-text  { width: 92%; }
+                > .group {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 20px;
+
+                    @media screen and (min-width: 1024px) { width: 100%; }
+                    
+                    > label {
+                        margin-bottom: 5px;
+                        
+                        color: $white_50;
+                        letter-spacing: 0;
+                        font: {
+                            family: $default;
+                            size: 16;
+                            weight: 300;
+                        };
                     }
+                    
+                    > .input {
+                        height: 40px;
+                        padding: 0 12px;
+                        border-radius: 6px;
+                        border: 1px solid transparent;
+                        
+                        outline: none;
+                        color: $white_50;
+                        background-color: $dark;
+                        font: {
+                            size: 18px;
+                            family: $default;
+                        };
+                        
+                        &.-name { width: 300px; }
+                        
+                        &.-mail { width: 380px; }
+                        
+                        &.-text {
+                            width: 500px;
+                            height: 200px;
+                            padding: 12px 12px;
+                        }
+
+                        @media screen and (max-width: 1024px) {
+                            &.-name,
+                            &.-mail,
+                            &.-text  {
+                                width: 96%;
+                                padding: 0 2%;
+                            }
+                        }
+                    }
+                }
+
+                > button {
+                    width: 150px;
+                    height: 45px;
+                    border: none;
+                    margin-left: auto;
+                    border-radius: 60px;
+                    outline: none;
+
+                    cursor: pointer;
+                    transition: .3s;
+                    color: #2C2C2C;
+                    background-color: white;
+                    font: {
+                        size: 1rem;
+                        weight: bold;
+                    };
+
+                    &:hover { background-color: #F5F5F5;  }
+                    
+                    &:focus,
+                    &:active { outline: none; }
+
+                    @media screen and (max-width: 1024px) { width: 100%; }
                 }
             }
         }
