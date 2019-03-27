@@ -48,7 +48,7 @@ export default {
     },
     methods: {
         fadeItems() {
-            document.querySelector('#team').offsetTop - window.scrollY <= 1100 ? this.isVisible = true : this.isVisible = false
+            document.querySelector('#team').offsetTop - window.scrollY <= 900 ? this.isVisible = true : this.isVisible = false
         }
     },
     mounted() {

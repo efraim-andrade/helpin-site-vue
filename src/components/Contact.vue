@@ -101,7 +101,7 @@ export default {
     },
     methods: {
         showElements() {
-            document.querySelector('#contact').offsetTop - window.scrollY <= 1100 ? this.isVisible = true : this.isVisible = false
+            document.querySelector('#contact').offsetTop - window.scrollY <= 900 ? this.isVisible = true : this.isVisible = false
         },
 
         sendMessage() {
@@ -125,38 +125,22 @@ $default: 'Raleway', sans-serif;
     position: relative;
     z-index: 1;
     
-    padding: 0 200px 50px;
+    padding: 80px 200px 50px;
     margin-top: 200px;
     
     background-color: $darker;
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0% 100%);
 
-    @media screen and (max-width: 1500px) { padding: 0 100px 40px; }
+    @media screen and (max-width: 1500px) { padding: 80px 100px 40px; }
 
     @media screen and (max-width: 1024px) {
         margin-top: 90px;
-        padding: 0 20px 45px;
+        padding: 80px 20px 45px;
     }
-    
-    &:before {
-        position: absolute;
-        top: -102px;
-        left: -2px;
-        
-        display: block;
-        width: 100%;
-        height: 100px;
-        border: 1px solid transparent;
-        
-        background: $darker;
-        content: "";
-        
-        clip-path: polygon(0 0, 0% 100%, 100% 100%);
-        
-        @media screen and (max-width: 1024px) {
-            top: -31px;
-            
-            height: 30px;
-        }
+
+    @media screen and (max-width: 1024px) {
+        padding-top: 60px;
+        clip-path: polygon(0 0, 100% 4.5%, 100% 100%, 0% 100%);
     }
     
     > .title {
