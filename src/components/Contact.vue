@@ -256,7 +256,7 @@ $default: 'Raleway', sans-serif;
                         weight: bold;
                     };
 
-                    &:hover { background-color: #F5F5F5;  }
+                    &:hover { transform: scale(1.05);  }
                     
                     &:focus,
                     &:active { outline: none; }
