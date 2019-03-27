@@ -162,6 +162,8 @@ $default: 'Raleway', sans-serif;
         @media screen and (max-width: 1024px) { flex-direction: column; }
 
         > .wrap {
+            position: relative;
+
             display: flex;
             flex: 1;
 
@@ -172,8 +174,6 @@ $default: 'Raleway', sans-serif;
             }
 
             form {
-                position: relative;
-
                 display: flex;
                 flex-direction: column;
                 
