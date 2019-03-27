@@ -36,16 +36,26 @@ $white_50: rgba(#FFF, .5);
 .side-bar {
     position: fixed;
     bottom: 100px;
-    left: 10px;
+    left: 20px;
     z-index: 10;
+
+    width: 45px;
+
+    @media screen and (max-width: 1500px) { bottom: 40px; }
 
     @media screen and (max-width: 1024px) { display: none; }
 
     > .menu {
+        padding: 0;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         > .item {
             transform: rotate(.75turn);
 
-            padding: 0 0 90px 0;
+            padding: 0;
             margin-bottom: 20px;
             list-style: none;
 
@@ -94,7 +104,7 @@ $white_50: rgba(#FFF, .5);
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        width: 60%;
+        width: 100%;
         height: 90px;
 
         > .link {

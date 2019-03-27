@@ -48,14 +48,14 @@ export default {
     },
     methods: {
         fadeItems() {
-            window.scrollY >= 1749 ? this.isVisible = true : this.isVisible = false;
+            document.querySelector('#team').offsetTop - window.scrollY <= 1100 ? this.isVisible = true : this.isVisible = false
         }
     },
     mounted() {
         document.addEventListener('scroll', this.fadeItems)
     },
     async created() {
-        await db.collection('members').onSnapshot(ref => {
+        await db.collection('members').orderBy('name').onSnapshot(ref => {
           const members = ref.docs.map(item => {
             const id = item.id
             const data = item.data()
@@ -113,6 +113,8 @@ export default {
         text-align: center;
         color: #FFF;
         font-size: 2.5rem;
+
+        @media screen and (max-width: 1500px){ margin-left: 0; }
 
         @media screen and (max-width: 1024px){
             padding-top: 40px;

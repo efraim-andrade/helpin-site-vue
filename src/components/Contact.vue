@@ -1,23 +1,27 @@
 <template>
-        <section class="contact" id="contact">
+    <section class="contact" id="contact">
         <h2 class="title">Contato</h2>
 
         <div class="content">
             <Contact :pose="isVisible ? 'visible' : 'hidden'">
-                <div class="group">
-                    <label for="">Nome:</label>
-                    <input class="input -name" type="text" />
-                </div>
+                <form  v-on:submit.prevent="sendMessage">
+                    <div class="group">
+                        <label for="">Nome:</label>
+                        <input class="input -name" type="text" v-model="name" />
+                    </div>
 
-                <div class="group">
-                    <label for="">E-mail:</label>
-                    <input class="input -mail" type="email" />
-                </div>
+                    <div class="group">
+                        <label for="">E-mail:</label>
+                        <input class="input -mail" type="email" v-model="email" />
+                    </div>
 
-                <div class="group">
-                    <label for="">Mensagem:</label>
-                    <textarea class="input -text" rows="10" cols="5"></textarea>
-                </div>
+                    <div class="group">
+                        <label for="">Mensagem:</label>
+                        <textarea class="input -text" rows="10" cols="5" v-model="message"></textarea>
+                    </div>
+
+                    <button type="submit">Enviar</button>
+                </form>
             </Contact>
 
             <Divider class="divider" :pose="isVisible ? 'visible' : 'hidden'" />
@@ -55,7 +59,10 @@ const posedProps = {
 
 export default {
     data: () => ({
-        isVisible: false
+        isVisible: false,
+        name: '',
+        email: '',
+        message: ''
     }),
     components: {
         Contact: posed.form({
@@ -94,7 +101,11 @@ export default {
     },
     methods: {
         showElements() {
-            window.scrollY >= 2800 ? this.isVisible = true : this.isVisible = false
+            document.querySelector('#contact').offsetTop - window.scrollY <= 1100 ? this.isVisible = true : this.isVisible = false
+        },
+
+        sendMessage() {
+            console.log(this.message)
         }
     },
     mounted() {
@@ -166,7 +177,7 @@ $default: 'Raleway', sans-serif;
 
         @media screen and (max-width: 1024px) { flex-direction: column; }
 
-        > form {
+        form {
             position: relative;
 
             flex: 1;

@@ -47,8 +47,6 @@ export default {
         
           this.topics = abouts
         })
-
-        this.topics = data
     },
 
     mounted() {
