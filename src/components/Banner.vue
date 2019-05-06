@@ -24,10 +24,8 @@
 </template>
 
 <script>
-import axios from 'axios'
 import posed from 'vue-pose'
-
-import db from '../services/firebase.js'
+import api from '@/services/api'
 
 export default {
     data: () => ({
@@ -47,13 +45,18 @@ export default {
         })
     },
     async created() {
-        const data = await db.collection('infos').doc('SRCU7wISQFDN2uupDAFM').get()
-
-        this.info = data.data();
+        await this.fetchInfo()
     },
     mounted() {
         this.isVisible = !this.isVisible
-    }
+    },
+    methods: {
+        async fetchInfo() {
+            const info = await api.get('/info')
+
+            this.info = info
+        }
+    },
 }
 </script>
 

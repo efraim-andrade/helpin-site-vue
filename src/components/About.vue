@@ -23,10 +23,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import api from '@/services/api'
 import posed from 'vue-pose'
-
-import db from '@/services/firebase'
 
 export default {
     data() {
@@ -35,24 +33,6 @@ export default {
             isVisible: false,
         }
     },
-
-    async created() {
-        await db.collection('abouts').onSnapshot(ref => {
-          const abouts = ref.docs.map(item => {
-            const id = item.id
-            const data = item.data()
-        
-            return { id, ...data }
-          })
-        
-          this.topics = abouts
-        })
-    },
-
-    mounted() {
-        document.addEventListener('scroll', this.fadeItems)
-    },
-
     components: {
         Topic: posed.article({
             visible: {
@@ -62,8 +42,18 @@ export default {
             hidden: { opacity: 0 } 
         })
     },
-
+    async created() {
+        await this.fetchAbouts()
+    },
+    mounted() {
+        document.addEventListener('scroll', this.fadeItems)
+    },
     methods: {
+        async fetchAbouts() {
+            const abouts = await api.get('/abouts')
+
+            this.topics = abouts
+        },
         fadeItems() {
             window.scrollY >= 250 ? this.isVisible = true : this.isVisible = false;
         }

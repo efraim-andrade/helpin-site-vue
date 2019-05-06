@@ -25,10 +25,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import api from '@/services/api'
 import posed from 'vue-pose'
-
-import db from '../services/firebase.js'
 
 export default {
     data() {
@@ -47,24 +45,20 @@ export default {
         })
     },
     methods: {
+        async fetchMembers() {
+            const members = await api.get('/members')
+
+            this.members = members
+        },
         fadeItems() {
             document.querySelector('#team').offsetTop - window.scrollY <= 600 ? this.isVisible = true : this.isVisible = false
-        }
+        },
     },
     mounted() {
         document.addEventListener('scroll', this.fadeItems)
     },
     async created() {
-        await db.collection('members').orderBy('name').onSnapshot(ref => {
-          const members = ref.docs.map(item => {
-            const id = item.id
-            const data = item.data()
-        
-            return { id, ...data }
-          })
-        
-          this.members = members;
-        })
+        await this.fetchMembers()
     }
 }
 </script>
