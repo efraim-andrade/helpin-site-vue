@@ -14,17 +14,18 @@
             <div class="right">
                 <img src="../assets/mockup.svg" class="mockup" />
 
-                <div class="links">
+                <p class="soon">em breve...</p>
+
+                <!-- <div class="links">
                     <div class="link"></div>
                     <div class="link"></div>
-                </div>
+                </div> -->
             </div>
         </div>
     </Section>
 </template>
 
 <script>
-import axios from 'axios'
 import posed from 'vue-pose'
 
 import db from '../services/firebase.js'
@@ -168,6 +169,8 @@ export default {
 
                 height: 58vh;
             }
+
+            .soon { font-size: 28px; }
             
             > .links {
                 display: grid;
