@@ -4,20 +4,20 @@
 
         <div class="content">
             <Contact :pose="isVisible ? 'visible' : 'hidden'" class="wrap">
-                <form  v-on:submit.prevent="sendMessage">
+                <form  action="http://api.helpin.gabrieldissotti.com/emails" method="POST">
                     <div class="group">
                         <label for="">Nome:</label>
-                        <input class="input -name" type="text" v-model="name" />
+                        <input class="input -name" type="text" v-model="name" name="name" />
                     </div>
 
                     <div class="group">
                         <label for="">E-mail:</label>
-                        <input class="input -mail" type="email" v-model="email" />
+                        <input class="input -mail" type="email" v-model="email" name="email" />
                     </div>
 
                     <div class="group">
                         <label for="">Mensagem:</label>
-                        <textarea class="input -text" rows="10" cols="5" v-model="message"></textarea>
+                        <textarea class="input -text" rows="10" cols="5" v-model="message" name="message"></textarea>
                     </div>
 
                     <button type="submit">Enviar</button>
@@ -105,7 +105,6 @@ export default {
         },
 
         sendMessage() {
-            // console.log(this.message)
         }
     },
     mounted() {

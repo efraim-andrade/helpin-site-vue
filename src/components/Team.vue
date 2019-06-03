@@ -48,6 +48,8 @@ export default {
         async fetchMembers() {
             const members = await api.get('/members')
 
+            console.log(members)
+
             this.members = members
         },
         fadeItems() {
