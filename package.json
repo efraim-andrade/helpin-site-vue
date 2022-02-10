@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "css-loader": "^2.1.1",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "nuxt": "^2.4.5",
     "sass": "^1.17.3",
     "sass-loader": "^7.1.0",
